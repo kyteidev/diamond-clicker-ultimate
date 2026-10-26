@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dqsycxv6cyyyo"]
+
+[ext_resource type="Script" uid="uid://b1adu2symr1po" path="res://scripts/shop_item.gd" id="1_uwrxv"]
+
+[node name="Game" type="CanvasLayer" unique_id=333142311]
+
+[node name="Background" type="ColorRect" parent="." unique_id=997221661]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="ShopScrollContainer" type="ScrollContainer" parent="." unique_id=1652265594]
+offset_left = 798.0
+offset_right = 1148.0
+offset_bottom = 248.0
+
+[node name="ShopContainer" type="VBoxContainer" parent="ShopScrollContainer" unique_id=909014674]
+layout_mode = 2
+
+[node name="ShopItem1" type="ColorRect" parent="ShopScrollContainer/ShopContainer" unique_id=1301008328]
+layout_mode = 2
+script = ExtResource("1_uwrxv")
+
+[node name="Label" type="Label" parent="ShopScrollContainer/ShopContainer/ShopItem1" unique_id=1781229898]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "lorem ipsum"
