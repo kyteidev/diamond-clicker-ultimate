@@ -15,6 +15,8 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="ShopItem" type="ColorRect" unique_id=1439018708]
 custom_minimum_size = Vector2(300, 50)
+offset_right = 300.0
+offset_bottom = 50.0
 pivot_offset = Vector2(150, 25)
 size_flags_horizontal = 4
 color = Color(0, 1, 0.58431375, 1)
