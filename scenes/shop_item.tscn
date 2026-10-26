@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c10oj80antevi"]
+
+[ext_resource type="Script" uid="uid://b1adu2symr1po" path="res://scripts/shop_item.gd" id="1_lrx6i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lrx6i"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="ShopItem" type="ColorRect" unique_id=1439018708]
+custom_minimum_size = Vector2(300, 50)
+pivot_offset = Vector2(150, 25)
+size_flags_horizontal = 4
+color = Color(0, 1, 0.58431375, 1)
+script = ExtResource("1_lrx6i")
+
+[node name="Name" type="Label" parent="." unique_id=1836680155]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -19.0
+offset_right = 106.0
+offset_bottom = 4.0
+grow_vertical = 2
+text = "lorem ipsum"
+label_settings = SubResource("LabelSettings_lrx6i")
+
+[node name="Cost" type="Label" parent="." unique_id=1768548691]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 48.0
+offset_bottom = 49.0
+text = "100"
+label_settings = SubResource("LabelSettings_nxcxh")
+
+[node name="Count" type="Label" parent="." unique_id=581282977]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -22.0
+offset_right = -8.0
+offset_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_4iqke")
