@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c10oj80antevi" path="res://scenes/shop_item.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_yqjtg"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
 font_size = 48
 font_color = Color(0, 0, 0, 1)
@@ -40,6 +44,32 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_yqjtg")
+
+[node name="DiamondCount" type="Label" parent="GamePanel" unique_id=914359771]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.0
+offset_top = 135.0
+offset_right = 272.0
+offset_bottom = 267.0
+grow_horizontal = 2
+text = "999M/999M"
+label_settings = SubResource("LabelSettings_yqjtg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultContainer" type="VBoxContainer" parent="GamePanel" unique_id=1825145717]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -218.0
+offset_right = 540.0
+offset_bottom = -11.0
+grow_vertical = 0
 
 [node name="ShopPanel" type="ColorRect" parent="." unique_id=1422886080]
 anchors_preset = 15
