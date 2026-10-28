@@ -7,6 +7,10 @@
 font_size = 96
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
 font_size = 48
 font_color = Color(0, 0, 0, 1)
@@ -66,10 +70,21 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 63.0
-offset_top = -218.0
+offset_top = -151.0
 offset_right = 540.0
 offset_bottom = -11.0
 grow_vertical = 0
+alignment = 1
+
+[node name="MultLabel" type="Label" parent="GamePanel/MultContainer" unique_id=993063856]
+layout_mode = 2
+text = "Mult:"
+label_settings = SubResource("LabelSettings_4iqke")
+
+[node name="PickMultLabel" type="Label" parent="GamePanel/MultContainer" unique_id=1440316997]
+layout_mode = 2
+text = "Pickaxe Mult:"
+label_settings = SubResource("LabelSettings_4iqke")
 
 [node name="ShopPanel" type="ColorRect" parent="." unique_id=1422886080]
 anchors_preset = 15
