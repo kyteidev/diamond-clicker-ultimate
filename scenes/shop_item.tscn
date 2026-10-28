@@ -3,21 +3,22 @@
 [ext_resource type="Script" uid="uid://b1adu2symr1po" path="res://scripts/shop_item.gd" id="1_lrx6i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lrx6i"]
+font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
-font_size = 12
+font_size = 36
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
-font_size = 32
+font_size = 64
 font_color = Color(0, 0, 0, 1)
 
 [node name="ShopItem" type="ColorRect" unique_id=1439018708]
-custom_minimum_size = Vector2(300, 50)
-offset_right = 300.0
-offset_bottom = 50.0
-pivot_offset = Vector2(150, 25)
+custom_minimum_size = Vector2(500, 100)
+offset_right = 500.0
+offset_bottom = 100.0
+pivot_offset = Vector2(250, 50)
 size_flags_horizontal = 4
 color = Color(0, 1, 0.58431375, 1)
 script = ExtResource("1_lrx6i")
@@ -28,19 +29,19 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 8.0
-offset_top = -19.0
-offset_right = 106.0
-offset_bottom = 4.0
+offset_top = -51.0
+offset_right = 300.0
+offset_bottom = 16.0
 grow_vertical = 2
 text = "lorem ipsum"
 label_settings = SubResource("LabelSettings_lrx6i")
 
 [node name="Cost" type="Label" parent="." unique_id=1768548691]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 26.0
-offset_right = 48.0
-offset_bottom = 49.0
+offset_left = 6.0
+offset_top = 49.0
+offset_right = 68.0
+offset_bottom = 99.0
 text = "100"
 label_settings = SubResource("LabelSettings_nxcxh")
 
