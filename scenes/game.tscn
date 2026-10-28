@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c10oj80antevi" path="res://scenes/shop_item.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://bta4yg2km3kqi" path="res://scripts/diamond.gd" id="2_lnu2h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
 font_size = 96
@@ -47,7 +48,9 @@ offset_right = 200.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(200, 200)
 texture = ExtResource("1_yqjtg")
+script = ExtResource("2_lnu2h")
 
 [node name="DiamondCount" type="Label" parent="GamePanel" unique_id=914359771]
 layout_mode = 1
@@ -129,3 +132,6 @@ text = "SHOP"
 label_settings = SubResource("LabelSettings_nxcxh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_exited"]
