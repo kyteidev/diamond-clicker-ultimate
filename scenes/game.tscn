@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c10oj80antevi" path="res://scenes/shop_item.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bta4yg2km3kqi" path="res://scripts/diamond.gd" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://b78uhgsmmy2lq" path="res://scripts/mult_container.gd" id="3_lbhrr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
 font_size = 96
@@ -79,6 +80,7 @@ offset_right = 540.0
 offset_bottom = -11.0
 grow_vertical = 0
 alignment = 1
+script = ExtResource("3_lbhrr")
 
 [node name="MultLabel" type="Label" parent="GamePanel/MultContainer" unique_id=993063856]
 layout_mode = 2
