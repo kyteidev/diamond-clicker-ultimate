@@ -13,6 +13,7 @@ func _ready() -> void:
 		data.name = upgrade.name
 		data.cost = upgrade.cost
 		data.count = 0
+		data.dps = upgrade.dps
 
 		add_child(item)
 		item.setup(data)

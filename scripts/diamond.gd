@@ -17,7 +17,7 @@ var sm := StateManager
 
 
 func _physics_process(delta: float) -> void:
-	count_label.text = "%s/%s" % [sm.diamonds, "999M"]
+	count_label.text = "%s/%s" % [floori(sm.diamonds), "999M"]
 
 	# diamond rotation
 	time += delta

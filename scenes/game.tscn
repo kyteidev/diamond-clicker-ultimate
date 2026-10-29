@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bta4yg2km3kqi" path="res://scripts/diamond.gd" id="2_lnu2h"]
 [ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="3_iywne"]
 [ext_resource type="Script" uid="uid://b78uhgsmmy2lq" path="res://scripts/mult_container.gd" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://ba7ffy5lnu0qx" path="res://scripts/dps_label.gd" id="4_p57ef"]
 [ext_resource type="Script" uid="uid://4rgl3eussoow" path="res://scripts/shop.gd" id="5_p57ef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
@@ -64,14 +65,32 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -272.0
-offset_top = 135.0
+offset_top = 114.0
 offset_right = 272.0
-offset_bottom = 267.0
+offset_bottom = 246.0
 grow_horizontal = 2
 text = "999M/999M"
 label_settings = SubResource("LabelSettings_yqjtg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DPSLabel" type="Label" parent="GamePanel" unique_id=993063856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -321.0
+offset_right = 237.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "DPS: "
+label_settings = SubResource("LabelSettings_4iqke")
+horizontal_alignment = 1
+script = ExtResource("4_p57ef")
 
 [node name="MultContainer" type="VBoxContainer" parent="GamePanel" unique_id=1825145717]
 layout_mode = 1
@@ -86,7 +105,7 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("3_lbhrr")
 
-[node name="MultLabel" type="Label" parent="GamePanel/MultContainer" unique_id=993063856]
+[node name="MultLabel" type="Label" parent="GamePanel/MultContainer" unique_id=142709108]
 layout_mode = 2
 text = "Mult:"
 label_settings = SubResource("LabelSettings_4iqke")

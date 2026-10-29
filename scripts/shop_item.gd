@@ -36,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 			if sm.diamonds >= data.cost:
 				data.count += 1
 				sm.diamonds -= data.cost
+				sm.dps += data.dps
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
