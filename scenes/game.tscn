@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dqsycxv6cyyyo"]
 
-[ext_resource type="PackedScene" uid="uid://c10oj80antevi" path="res://scenes/shop_item.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bta4yg2km3kqi" path="res://scripts/diamond.gd" id="2_lnu2h"]
 [ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="3_iywne"]
 [ext_resource type="Script" uid="uid://b78uhgsmmy2lq" path="res://scripts/mult_container.gd" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://4rgl3eussoow" path="res://scripts/shop.gd" id="5_p57ef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
 font = ExtResource("3_iywne")
@@ -135,10 +135,9 @@ grow_horizontal = 2
 [node name="ShopContainer" type="VBoxContainer" parent="ShopPanel/ShopScrollContainer" unique_id=909014674]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 alignment = 1
-
-[node name="ShopItem1" parent="ShopPanel/ShopScrollContainer/ShopContainer" unique_id=1439018708 instance=ExtResource("1_uwrxv")]
-layout_mode = 2
+script = ExtResource("5_p57ef")
 
 [connection signal="mouse_entered" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_exited"]
