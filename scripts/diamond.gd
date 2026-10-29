@@ -11,15 +11,13 @@ const CLICK_SCALE = 1.0
 var mouse_hovered := false
 var time = 0.0
 
-var diamonds: int = 0
-
 var sm := StateManager
 
 @onready var count_label: Label = %DiamondCount
 
 
 func _physics_process(delta: float) -> void:
-	count_label.text = "%s/%s" % [diamonds, "999M"]
+	count_label.text = "%s/%s" % [sm.diamonds, "999M"]
 
 	# diamond rotation
 	time += delta
@@ -33,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
-			diamonds += 1 * sm.pick_mult
+			sm.diamonds += 1 * sm.pick_mult
 
 			var click_counter: Label = CLICK_COUNTER_SCENE.instantiate()
 			click_counter.text = "+%s" % sm.pick_mult
