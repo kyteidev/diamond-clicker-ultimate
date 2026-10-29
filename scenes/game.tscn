@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dqsycxv6cyyyo"]
 
+[ext_resource type="PackedScene" uid="uid://c17f4vowp0jm" path="res://scenes/particle_rain.tscn" id="1_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bta4yg2km3kqi" path="res://scripts/diamond.gd" id="2_lnu2h"]
 [ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="3_iywne"]
@@ -40,6 +41,9 @@ offset_right = -640.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="ParticleRain" parent="GamePanel" unique_id=569330210 instance=ExtResource("1_u5sy4")]
+position = Vector2(640, -50)
 
 [node name="Diamond" type="TextureRect" parent="GamePanel" unique_id=1615471962]
 layout_mode = 1
