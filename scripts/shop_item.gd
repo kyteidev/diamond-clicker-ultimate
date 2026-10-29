@@ -5,7 +5,7 @@ const BASE_SCALE = 1.0
 const HOVER_SCALE = 1.1
 const CLICK_SCALE = 1.0
 
-const OVERLAY_TWEEN_DURATION = 0.3
+const OVERLAY_TWEEN_DURATION = 0.15
 
 var data: ShopItemData
 
