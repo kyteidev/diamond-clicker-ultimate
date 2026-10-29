@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://1x53b2ao5vta"]
 
+[ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="1_3wdqu"]
 [ext_resource type="Script" uid="uid://budqrs1tfocl2" path="res://scripts/click_counter.gd" id="1_wtg5s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qitnh"]
+font = ExtResource("1_3wdqu")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
@@ -11,4 +13,6 @@ offset_right = 73.0
 offset_bottom = 88.0
 text = "+1"
 label_settings = SubResource("LabelSettings_qitnh")
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("1_wtg5s")
