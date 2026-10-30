@@ -74,12 +74,18 @@ func setup(card_data: BoosterCardData) -> void:
 
 
 func show_card() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 	await get_tree().process_frame
 	global_position.y = 1080 + size.y
 
 	var tween := create_tween()
 	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.finished.connect(
+		func() -> void:
+			mouse_filter = Control.MOUSE_FILTER_STOP,
+	)
 
 
 func hide_card() -> void:
