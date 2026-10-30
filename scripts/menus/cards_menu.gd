@@ -1,15 +1,22 @@
 extends CanvasLayer
 
+const TWEEN_DURATION = 0.5
+
 var rng := RandomNumberGenerator.new()
 
 var um := UpgradesManager
 
+var bg_orig_alpha: float
+
 @onready var cards_container: HBoxContainer = $CardsContainer
 @onready var game: CanvasLayer = get_parent()
+@onready var background: ColorRect = $Background
 
 
 func _ready() -> void:
 	visible = false
+
+	bg_orig_alpha = background.color.a
 
 
 func show_cards_menu() -> void:
@@ -37,11 +44,32 @@ func show_cards_menu() -> void:
 			boost_data.caveat_amount = boost.caveat_amount
 
 		card.setup(boost_data)
+		card.show_card()
+
+	# set up tween
+	background.color.a = 0.0
+	var bg_tween := create_tween()
+	bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
 	visible = true
 
 
 func hide_cards_menu() -> void:
-	get_tree().paused = false
-	visible = false
+	for card in cards_container.get_children():
+		card.hide_card()
 
-	game.reset()
+	# time it takes for clicked booster card to finish tween
+	get_tree().create_timer(1.0).timeout.connect(
+		func() -> void:
+			get_tree().paused = false
+			game.reset()
+
+			var bg_tween := create_tween()
+			bg_tween.tween_property(background, "color:a", 0.0, TWEEN_DURATION) \
+					.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+			bg_tween.finished.connect(
+				func() -> void:
+					visible = false,
+			),
+	)

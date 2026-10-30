@@ -5,12 +5,17 @@ const HOVER_SCALE = 1.1
 const BASE_SCALE = 1.0
 const CLICK_SCALE = 0.95
 
+const TWEEN_DURATION = 0.5
+const SELECTED_DELAY = 0.5
+
 var sm := StateManager
 var um := UpgradesManager
 
 var data: BoosterCardData
-
 var mouse_hovered := false
+var selected := false
+
+var orig_pos: Vector2
 
 var booster_descriptions = {
 	um.BoostTypes.MULT: "Multiplier ",
@@ -28,6 +33,10 @@ var booster_descriptions = {
 @onready var cards_menu: CanvasLayer = $"../.."
 
 
+func _ready() -> void:
+	orig_pos = global_position
+
+
 func _process(_delta: float) -> void:
 	if mouse_hovered:
 		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
@@ -36,6 +45,8 @@ func _process(_delta: float) -> void:
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
+			selected = true
+
 			_perform_action(data.boost_amount)
 			if data.caveat_type != um.BoostTypes.NONE:
 				_perform_action(data.caveat_amount)
@@ -45,6 +56,8 @@ func _process(_delta: float) -> void:
 
 
 func setup(card_data: BoosterCardData) -> void:
+	selected = false
+
 	data = card_data
 	title.text = data.booster_name
 
@@ -58,6 +71,22 @@ func setup(card_data: BoosterCardData) -> void:
 
 	if data.caveat_type != um.BoostTypes.NONE:
 		description.text += "\n%s%s" % [booster_descriptions[data.caveat_type], caveat_amount_text]
+
+
+func show_card() -> void:
+	await get_tree().process_frame
+	global_position.y = 1080 + size.y
+
+	var tween := create_tween()
+	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+
+
+func hide_card() -> void:
+	var tween := create_tween()
+	tween.tween_property(self, "global_position:y", 1080 + size.y, TWEEN_DURATION) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT) \
+			.set_delay(SELECTED_DELAY if selected else 0.0)
 
 
 func _match_desc_text(type: int, amount) -> String:
