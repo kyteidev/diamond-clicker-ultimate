@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c5hpk5u5dwk5q"]
+
+[ext_resource type="Script" uid="uid://byangbxoodqy0" path="res://scripts/menus/pause_menu.gd" id="1_7unhi"]
+[ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="1_fwndu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
+font = ExtResource("1_fwndu")
+font_size = 96
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=641017661]
+process_mode = 3
+script = ExtResource("1_7unhi")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2005087731]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="Label" type="Label" parent="." unique_id=140119176]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -267.0
+offset_top = 220.0
+offset_right = 267.0
+offset_bottom = 334.0
+grow_horizontal = 2
+text = "Game Paused"
+label_settings = SubResource("LabelSettings_nxcxh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1515167202]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -30.0
+offset_right = 203.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=1628862455]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fwndu")
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=1151077792]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fwndu")
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
