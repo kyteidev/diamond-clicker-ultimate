@@ -15,12 +15,8 @@ var time = 0.0
 var sm := StateManager
 var h := Helper
 
-@onready var count_label: Label = %DiamondCount
-
 
 func _physics_process(delta: float) -> void:
-	count_label.text = "%s/%s" % [h.shorten_number(floori(sm.diamonds)), "999M"]
-
 	# diamond rotation
 	time += delta
 	rotation_degrees = (cos(deg_to_rad(time * 250))) * 10
