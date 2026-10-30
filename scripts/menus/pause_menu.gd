@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var cards_menu: CanvasLayer
 @export var death_menu: CanvasLayer
 
 
@@ -10,7 +11,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		if not death_menu.visible:
+		if not death_menu.visible and not cards_menu.visible:
 			_toggle_pause()
 
 

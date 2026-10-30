@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://by1gqrnvbwihp" path="res://scripts/hunger_bar.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://5rnyevskfm6a" path="res://scenes/menus/death_menu.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c5hpk5u5dwk5q" path="res://scenes/menus/pause_menu.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cipfnscx5cybs" path="res://scenes/menus/cards_menu.tscn" id="12_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
 font = ExtResource("3_iywne")
@@ -226,8 +227,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DeathMenu" parent="." unique_id=1325817900 instance=ExtResource("11_kvpfn")]
+visible = false
 
-[node name="PauseMenu" parent="." unique_id=641017661 node_paths=PackedStringArray("death_menu") instance=ExtResource("12_dinhu")]
+[node name="CardsMenu" parent="." unique_id=1260150632 instance=ExtResource("12_kvuet")]
+visible = false
+
+[node name="PauseMenu" parent="." unique_id=641017661 node_paths=PackedStringArray("cards_menu", "death_menu") instance=ExtResource("12_dinhu")]
+visible = false
+cards_menu = NodePath("../CardsMenu")
 death_menu = NodePath("../DeathMenu")
 
 [connection signal="mouse_entered" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_entered"]
