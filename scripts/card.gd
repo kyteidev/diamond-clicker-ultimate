@@ -1,9 +1,15 @@
 class_name BoosterCard
 extends ColorRect
 
+const HOVER_SCALE = 1.1
+const BASE_SCALE = 1.0
+const CLICK_SCALE = 0.95
+
 var um := UpgradesManager
 
 var data: BoosterCardData
+
+var mouse_hovered := false
 
 var booster_descriptions = {
 	um.BoostTypes.MULT: "Multiplier ",
@@ -17,6 +23,19 @@ var booster_descriptions = {
 @onready var icon: TextureRect = $TextureRect
 @onready var title: Label = $VBoxContainer/Title
 @onready var description: Label = $VBoxContainer/Description
+
+
+func _process(_delta: float) -> void:
+	if mouse_hovered:
+		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
+
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
+
+		if Input.is_action_just_pressed("click"):
+			pass
+	else:
+		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
 
 func setup(card_data: BoosterCardData) -> void:
@@ -45,3 +64,11 @@ func _match_desc_text(type: int, amount) -> String:
 		um.BoostTypes.INSURANCE:
 			amount_text = ""
 	return amount_text
+
+
+func _on_mouse_entered() -> void:
+	mouse_hovered = true
+
+
+func _on_mouse_exited() -> void:
+	mouse_hovered = false
