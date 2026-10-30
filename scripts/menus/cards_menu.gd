@@ -23,15 +23,20 @@ func show_cards_menu() -> void:
 	get_tree().paused = true
 
 	# randomly pick booster cards and show them
+	var picked_cards: Array[String] = []
 	for card in cards_container.get_children():
 		var boost: Dictionary
-		var random: float = rng.randf()
-		if random <= um.RARITY_CHANCES[um.BoostRarities.LEGENDARY]:
-			boost = um.LEGENDARY_BOOSTS.pick_random()
-		elif random <= um.RARITY_CHANCES[um.BoostRarities.RARE]:
-			boost = um.RARE_BOOSTS.pick_random()
-		else:
-			boost = um.COMMON_BOOSTS.pick_random()
+		var attempts: int = 0
+		while (boost.is_empty() or boost.name in picked_cards) and attempts < 30:
+			var random: float = rng.randf()
+			if random <= um.RARITY_CHANCES[um.BoostRarities.LEGENDARY]:
+				boost = um.LEGENDARY_BOOSTS.pick_random()
+			elif random <= um.RARITY_CHANCES[um.BoostRarities.RARE]:
+				boost = um.RARE_BOOSTS.pick_random()
+			else:
+				boost = um.COMMON_BOOSTS.pick_random()
+			picked_cards.append(boost.name)
+			attempts += 1
 
 		var boost_data := BoosterCardData.new()
 		boost_data.booster_name = boost.name
