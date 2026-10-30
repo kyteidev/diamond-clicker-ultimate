@@ -13,12 +13,13 @@ var mouse_hovered := false
 var time = 0.0
 
 var sm := StateManager
+var h := Helper
 
 @onready var count_label: Label = %DiamondCount
 
 
 func _physics_process(delta: float) -> void:
-	count_label.text = "%s/%s" % [floori(sm.diamonds), "999M"]
+	count_label.text = "%s/%s" % [h.shorten_number(floori(sm.diamonds)), "999M"]
 
 	# diamond rotation
 	time += delta
