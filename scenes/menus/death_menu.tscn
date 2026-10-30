@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://5rnyevskfm6a"]
+
+[ext_resource type="Script" uid="uid://mj4l23jojalv" path="res://scripts/menus/death_menu.gd" id="1_jgt2l"]
+[ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="1_s3l4v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
+font = ExtResource("1_s3l4v")
+font_size = 192
+
+[node name="DeathMenu" type="CanvasLayer" unique_id=1325817900]
+process_mode = 3
+script = ExtResource("1_jgt2l")
+
+[node name="Background" type="ColorRect" parent="." unique_id=423451516]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2047803748]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = -400.0
+offset_right = 768.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1446568148]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -229.5
+offset_right = 672.0
+offset_bottom = 229.5
+grow_vertical = 2
+text = "GAME
+OVER"
+label_settings = SubResource("LabelSettings_nxcxh")

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://4rgl3eussoow" path="res://scripts/shop.gd" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cuw4pnoecrak2" path="res://scripts/diamond_count_label.gd" id="6_vtaks"]
 [ext_resource type="Script" uid="uid://by1gqrnvbwihp" path="res://scripts/hunger_bar.gd" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://5rnyevskfm6a" path="res://scenes/menus/death_menu.tscn" id="11_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
 font = ExtResource("3_iywne")
@@ -222,6 +223,8 @@ text = "SHOP"
 label_settings = SubResource("LabelSettings_nxcxh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DeathMenu" parent="." unique_id=1325817900 instance=ExtResource("11_kvpfn")]
 
 [connection signal="mouse_entered" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GamePanel/Diamond" to="GamePanel/Diamond" method="_on_mouse_exited"]
