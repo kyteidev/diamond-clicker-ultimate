@@ -1,7 +1,8 @@
 extends Label
 
 var sm := StateManager
+var h := Helper
 
 
 func _process(_delta: float) -> void:
-	text = "DPS: %s" % sm.dps
+	text = "DPS: %s" % h.shorten_number(sm.dps)

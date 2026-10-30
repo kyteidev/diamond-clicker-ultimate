@@ -15,6 +15,7 @@ var overlay_tween: Tween
 
 var sm := StateManager
 var um := UpgradesManager
+var h := Helper
 
 @onready var name_label: Label = $Name
 @onready var count_label: Label = $Count
@@ -33,8 +34,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	cost_label.text = str(data.cost)
-	count_label.text = str(data.count)
+	cost_label.text = h.shorten_number(data.cost)
+	count_label.text = h.shorten_number(data.count)
 
 	if sm.diamonds < data.cost:
 		if not disabled_overlay.visible:
