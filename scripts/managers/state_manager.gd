@@ -1,7 +1,7 @@
 extends Node
 
-const MAX_HUNGER = 3.0
-const STARTING_TARGET = 0.0
+const MAX_HUNGER = 180.0
+const STARTING_TARGET = 1000.0
 
 var diamonds := 0.0:
 	set(value):
