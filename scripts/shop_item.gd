@@ -17,8 +17,10 @@ var sm := StateManager
 var um := UpgradesManager
 
 @onready var name_label: Label = $Name
-@onready var cost_label: Label = $Cost
 @onready var count_label: Label = $Count
+
+@onready var cost_label: Label = $Container/Cost
+@onready var dps_label: Label = $Container/DPS
 
 @onready var disabled_overlay: ColorRect = $DisabledOverlay
 
@@ -86,6 +88,7 @@ func setup(item_data: ShopItemData) -> void:
 	name_label.text = data.name
 	cost_label.text = str(data.cost)
 	count_label.text = str(data.count)
+	dps_label.text = "+%s" % str(data.dps)
 
 
 func _mouse_entered() -> void:
