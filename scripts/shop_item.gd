@@ -17,6 +17,13 @@ var sm := StateManager
 var um := UpgradesManager
 var h := Helper
 
+var cost: float:
+	set(value):
+		cost = value
+		data.cost = value
+	get():
+		return cost * sm.cost_mult
+
 @onready var name_label: Label = $Name
 @onready var count_label: Label = $Count
 
@@ -34,10 +41,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	cost_label.text = h.shorten_number(data.cost)
+	cost_label.text = h.shorten_number(cost)
 	count_label.text = h.shorten_number(data.count)
 
-	if sm.diamonds < data.cost:
+	if sm.diamonds < cost:
 		if not disabled_overlay.visible:
 			if overlay_tween:
 				overlay_tween.kill()
@@ -65,29 +72,30 @@ func _physics_process(_delta: float) -> void:
 					disabled_overlay.visible = false,
 			)
 
-	if mouse_hovered and sm.diamonds >= data.cost:
+	if mouse_hovered and sm.diamonds >= cost:
 		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
 
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
-			if sm.diamonds >= data.cost:
+			if sm.diamonds >= cost:
 				data.count += 1
-				sm.diamonds -= data.cost
+				sm.diamonds -= cost
 				sm.dps += data.dps
 
-				data.cost *= um.COST_MULT
-				data.cost = snapped(data.cost, 0.01)
+				cost *= um.COST_MULT
+				cost = snapped(cost, 0.01)
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
 
 func setup(item_data: ShopItemData) -> void:
 	data = item_data
+	cost = data.cost
 
 	name_label.text = data.name
-	cost_label.text = str(data.cost)
+	cost_label.text = str(cost)
 	count_label.text = str(data.count)
 	dps_label.text = "+%s" % str(data.dps)
 
