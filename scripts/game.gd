@@ -7,7 +7,7 @@ var sm := StateManager
 
 
 func _ready() -> void:
-	reset()
+	sm.hunger = sm.MAX_HUNGER * sm.hunger_mult
 
 
 func _process(_delta: float) -> void:
@@ -22,3 +22,4 @@ func _process(_delta: float) -> void:
 
 func reset() -> void:
 	sm.hunger = sm.MAX_HUNGER * sm.hunger_mult
+	sm.target_diamonds *= 1.5
