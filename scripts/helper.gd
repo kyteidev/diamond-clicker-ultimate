@@ -1,6 +1,6 @@
 extends Node
 
-const ABBREVIATIONS = {
+const SUFFIXES = {
 	3: "k",
 	6: "M",
 	9: "B",
@@ -19,9 +19,9 @@ const ABBREVIATIONS = {
 
 
 func shorten_number(number: Variant) -> String:
-	for i in range(42, -3):
-		if number >= 10 ** i:
-			var divided = snapped(float(number) / (10 ** (i - 3)), 0.01)
-			var string := "%s%s" % [divided, ABBREVIATIONS[i]]
+	for i in range(42, 0, -3):
+		if number >= 10.0 ** i:
+			var divided: float = floor(number / pow(10.0, i) * 100.0) / 100.0
+			var string := "%s%s" % [String.num(divided), SUFFIXES[i]]
 			return string
 	return str(number)
