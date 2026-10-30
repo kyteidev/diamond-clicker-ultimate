@@ -1,6 +1,7 @@
 extends TextureRect
 
 const CLICK_COUNTER_SCENE = preload("res://scenes/click_counter.tscn")
+const CLICK_PARTICLES_SCENE = preload("res://scenes/click_particles.tscn")
 
 const ROTATION_AMOUNT = 1.4
 
@@ -37,6 +38,12 @@ func _physics_process(delta: float) -> void:
 			click_counter.text = "+%s" % sm.pick_mult
 			click_counter.global_position = get_global_mouse_position()
 			get_tree().current_scene.add_child(click_counter)
+
+			var click_particles: CPUParticles2D = CLICK_PARTICLES_SCENE.instantiate()
+			click_particles.global_position = get_global_mouse_position()
+			click_particles.amount = round(sm.pick_mult)
+			get_tree().current_scene.add_child(click_particles)
+			click_particles.restart()
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 

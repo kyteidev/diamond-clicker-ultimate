@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://3v40n3ntc42g"]
+
+[ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="1_v3xvk"]
+[ext_resource type="Script" uid="uid://vctfmddyujwn" path="res://scripts/click_particles.gd" id="2_o2edq"]
+
+[sub_resource type="Curve" id="Curve_v3xvk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.51587296, 0.8128655), -0.8181819, -0.8181819, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_v3xvk"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[node name="ClickParticles" type="CPUParticles2D" unique_id=1437942522]
+z_index = 998
+emitting = false
+amount = 1
+texture = ExtResource("1_v3xvk")
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+randomness = 0.3
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 900)
+initial_velocity_min = 250.0
+initial_velocity_max = 450.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+damping_min = 20.0
+damping_max = 60.0
+angle_max = 360.0
+scale_amount_min = 3.5
+scale_amount_max = 4.2
+scale_amount_curve = SubResource("Curve_v3xvk")
+color_ramp = SubResource("Gradient_v3xvk")
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+script = ExtResource("2_o2edq")
