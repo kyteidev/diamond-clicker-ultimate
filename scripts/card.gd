@@ -5,6 +5,7 @@ const HOVER_SCALE = 1.1
 const BASE_SCALE = 1.0
 const CLICK_SCALE = 0.95
 
+var sm := StateManager
 var um := UpgradesManager
 
 var data: BoosterCardData
@@ -24,6 +25,8 @@ var booster_descriptions = {
 @onready var title: Label = $VBoxContainer/Title
 @onready var description: Label = $VBoxContainer/Description
 
+@onready var cards_menu: CanvasLayer = $"../.."
+
 
 func _process(_delta: float) -> void:
 	if mouse_hovered:
@@ -33,7 +36,10 @@ func _process(_delta: float) -> void:
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
-			pass
+			_perform_action(data.boost_amount)
+			if data.caveat_type != um.BoostTypes.NONE:
+				_perform_action(data.caveat_amount)
+			cards_menu.hide_cards_menu()
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
@@ -49,7 +55,8 @@ func setup(card_data: BoosterCardData) -> void:
 	var amount_text: String = _match_desc_text(data.type, data.boost_amount)
 	var caveat_amount_text: String = _match_desc_text(data.caveat_type, data.caveat_amount)
 	description.text = "%s%s" % [booster_descriptions[data.type], amount_text]
-	if data.caveat_type:
+
+	if data.caveat_type != um.BoostTypes.NONE:
 		description.text += "\n%s%s" % [booster_descriptions[data.caveat_type], caveat_amount_text]
 
 
@@ -64,6 +71,22 @@ func _match_desc_text(type: int, amount) -> String:
 		um.BoostTypes.INSURANCE:
 			amount_text = ""
 	return amount_text
+
+
+func _perform_action(amount) -> void:
+	match data.type:
+		um.BoostTypes.MULT:
+			sm.mult += (amount - 1.0)
+		um.BoostTypes.PICK_MULT:
+			sm.pick_mult += (amount - 1.0)
+		um.BoostTypes.COST:
+			sm.cost_mult += (amount - 1.0)
+		um.BoostTypes.HUNGER:
+			sm.hunger_mult += (amount - 1.0)
+		um.BoostTypes.DIAMONDS:
+			sm.diamonds += (amount - 1.0)
+		um.BoostTypes.INSURANCE:
+			sm.insurance += 1
 
 
 func _on_mouse_entered() -> void:

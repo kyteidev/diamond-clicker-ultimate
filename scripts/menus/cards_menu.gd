@@ -5,6 +5,7 @@ var rng := RandomNumberGenerator.new()
 var um := UpgradesManager
 
 @onready var cards_container: HBoxContainer = $CardsContainer
+@onready var game: CanvasLayer = get_parent()
 
 
 func _ready() -> void:
@@ -30,10 +31,17 @@ func show_cards_menu() -> void:
 		boost_data.icon = boost.icon
 		boost_data.type = boost.type
 		boost_data.boost_amount = boost.amount
+		boost_data.caveat_type = boost.caveat
 
-		if boost.caveat:
-			boost_data.caveat_type = boost.caveat
+		if boost.caveat != um.BoostTypes.NONE:
 			boost_data.caveat_amount = boost.caveat_amount
 
 		card.setup(boost_data)
 	visible = true
+
+
+func hide_cards_menu() -> void:
+	get_tree().paused = false
+	visible = false
+
+	game.reset()

@@ -1,6 +1,7 @@
 extends Node
 
 enum BoostTypes {
+	NONE,
 	MULT,
 	PICK_MULT,
 	COST,
@@ -27,28 +28,28 @@ const COMMON_BOOSTS = [
 		"icon": Rect2(176.0, 128.0, 16.0, 16.0),
 		"type": BoostTypes.PICK_MULT,
 		"amount": 2.0,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 	{
 		"name": "Fortune",
 		"icon": Rect2(80.0, 160.0, 16.0, 16.0),
 		"type": BoostTypes.MULT,
 		"amount": 1.5,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 	{
 		"name": "Tax Relief",
 		"icon": Rect2(144.0, 160.0, 16.0, 16.0),
 		"type": BoostTypes.COST,
 		"amount": 0.95,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 	{
 		"name": "Time Warp",
 		"icon": Rect2(160.0, 160.0, 16.0, 16.0),
 		"type": BoostTypes.DIAMONDS,
 		"amount": 0.5,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 ]
 
@@ -74,14 +75,14 @@ const RARE_BOOSTS = [
 		"icon": Rect2(160.0, 320.0, 16.0, 16.0),
 		"type": BoostTypes.DIAMONDS,
 		"amount": 1.0,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 	{
 		"name": "Endurance",
 		"icon": Rect2(112.0, 320.0, 16.0, 16.0),
 		"type": BoostTypes.HUNGER,
 		"amount": 1.20,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 ]
 
@@ -99,7 +100,7 @@ const LEGENDARY_BOOSTS = [
 		"icon": Rect2(0.0, 384.0, 16.0, 16.0),
 		"type": BoostTypes.INSURANCE,
 		"amount": 1.0,
-		"caveat": null,
+		"caveat": BoostTypes.NONE,
 	},
 ]
 

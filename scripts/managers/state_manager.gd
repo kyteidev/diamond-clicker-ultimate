@@ -10,7 +10,10 @@ var target_diamonds := STARTING_TARGET
 
 var mult := 1.0
 var pick_mult := 1.0
+var cost_mult := 1.0
+var hunger_mult := 1.0
 var dps: int = 0
+var insurance: int = 0
 
 var hunger: float = MAX_HUNGER:
 	set(value):
