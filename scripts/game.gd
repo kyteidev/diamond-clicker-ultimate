@@ -7,7 +7,7 @@ var sm := StateManager
 
 
 func _ready() -> void:
-	sm.hunger = sm.MAX_HUNGER * sm.hunger_mult
+	sm.reset_values()
 
 
 func _process(delta: float) -> void:

@@ -3,35 +3,60 @@ extends Node
 const MAX_HUNGER = 180.0
 const STARTING_TARGET = 1000.0
 
-var diamonds := 0.0:
+var diamonds: float:
 	set(value):
 		diamonds = snapped(value, 0.01)
-var target_diamonds := STARTING_TARGET
+var target_diamonds: float
 
-var cost_mult := 1.0
-var hunger_mult := 1.0
-var dps: int = 0
-var insurance: int = 0
+var cost_mult: float
+var hunger_mult: float
+var dps: int
+var insurance: int
 
-var mult := 1.0:
+var mult: float:
 	set(value):
 		mult = value
 		highest_mult = max(highest_mult, value)
-var pick_mult := 1.0:
+var pick_mult: float:
 	set(value):
 		pick_mult = value
 		highest_pick_mult = max(highest_pick_mult, value)
-var hunger: float = MAX_HUNGER:
+var hunger: float:
 	set(value):
 		hunger = max(value, 0.0)
 
 # STATS
-var rounds: int = 1
-var active_diamonds := 0.0
-var passive_diamonds := 0.0
-var diamond_clicked: int = 0
-var highest_mult := 1.0
-var highest_pick_mult := 1.0
-var diamonds_spent := 0.0
-var total_bought: int = 0
-var most_bought := { "name": "None", "count": 0 }
+var rounds: int
+var active_diamonds: float
+var passive_diamonds: float
+var diamond_clicked: int
+var highest_mult: float
+var highest_pick_mult: float
+var diamonds_spent: float
+var total_bought: int
+var most_bought: Dictionary
+
+
+func reset_values() -> void:
+	diamonds = 0.0
+	target_diamonds = STARTING_TARGET
+
+	cost_mult = 1.0
+	hunger_mult = 1.0
+	dps = 0
+	insurance = 0
+
+	mult = 1.0
+	pick_mult = 1.0
+	hunger = MAX_HUNGER
+
+	# STATS
+	rounds = 1
+	active_diamonds = 0.0
+	passive_diamonds = 0.0
+	diamond_clicked = 0
+	highest_mult = 1.0
+	highest_pick_mult = 1.0
+	diamonds_spent = 0.0
+	total_bought = 0
+	most_bought = { "name": "None", "count": 0 }

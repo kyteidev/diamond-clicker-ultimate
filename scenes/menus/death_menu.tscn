@@ -260,13 +260,13 @@ grow_vertical = 0
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Button" type="Button" parent="Stats/HBoxContainer" unique_id=836749439]
+[node name="NewGameButton" type="Button" parent="Stats/HBoxContainer" unique_id=836749439]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_s3l4v")
 theme_override_font_sizes/font_size = 48
 text = "New Game"
 
-[node name="Button2" type="Button" parent="Stats/HBoxContainer" unique_id=1586402208]
+[node name="MainMenuButton" type="Button" parent="Stats/HBoxContainer" unique_id=1586402208]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_s3l4v")
 theme_override_font_sizes/font_size = 48
@@ -284,3 +284,6 @@ grow_vertical = 2
 text = "GAME
 OVER"
 label_settings = SubResource("LabelSettings_nxcxh")
+
+[connection signal="pressed" from="Stats/HBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Stats/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

@@ -74,3 +74,13 @@ func show_death_menu() -> void:
 	var title_tween := create_tween()
 	title_tween.tween_property(title, "global_position:x", title_orig_pos.x, TWEEN_DURATION) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_delay(TWEEN_DURATION)
+
+
+func _on_new_game_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
