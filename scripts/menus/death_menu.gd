@@ -106,6 +106,10 @@ func _animate_stats() -> void:
 		stats_tween.tween_property(child, "global_position:y", orig_y, TWEEN_DURATION).set_delay(
 			delay
 		)
+		stats_tween.tween_callback(
+			func() -> void:
+				SFX.play("stat", 0.0, 0.02),
+		).set_delay(delay)
 
 		index += 1
 

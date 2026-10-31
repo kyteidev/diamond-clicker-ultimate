@@ -6,6 +6,7 @@ var sounds: Dictionary = {
 	"click": preload("res://assets/sfx/click.wav"),
 	"defeat": preload("res://assets/sfx/defeat.wav"),
 	"mine": preload("res://assets/sfx/mine.wav"),
+	"stat": preload("res://assets/sfx/stat.wav"),
 }
 
 var bgm_player := AudioStreamPlayer.new()
