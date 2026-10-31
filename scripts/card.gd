@@ -76,6 +76,7 @@ func setup(card_data: BoosterCardData) -> void:
 
 
 func show_card() -> void:
+	modulate.a = 0.0
 	await get_tree().process_frame
 	global_position.y = 1080 + size.y
 	modulate.a = 1.0
