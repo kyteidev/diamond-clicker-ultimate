@@ -47,9 +47,9 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("click"):
 			selected = true
 
-			_perform_action(data.boost_amount)
+			_perform_action(data.type, data.boost_amount)
 			if data.caveat_type != um.BoostTypes.NONE:
-				_perform_action(data.caveat_amount)
+				_perform_action(data.caveat_type, data.caveat_amount)
 			cards_menu.hide_cards_menu()
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
@@ -113,8 +113,8 @@ func _match_desc_text(type: int, amount) -> String:
 	return amount_text
 
 
-func _perform_action(amount) -> void:
-	match data.type:
+func _perform_action(type, amount) -> void:
+	match type:
 		um.BoostTypes.MULT:
 			sm.mult += (amount - 1.0)
 		um.BoostTypes.PICK_MULT:
