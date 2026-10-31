@@ -44,6 +44,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	cost_label.text = h.shorten_number(cost)
 	count_label.text = h.shorten_number(data.count)
+	dps_label.text = "+%s" % h.shorten_number(data.dps * sm.mult)
 
 	if sm.diamonds < cost:
 		if not disabled_overlay.visible:
