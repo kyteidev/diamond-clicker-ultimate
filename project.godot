@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="diamond clicker ultimate"
-run/main_scene="uid://dqsycxv6cyyyo"
+run/main_scene="uid://2t0q6u0ykm4g"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

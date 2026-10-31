@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://2t0q6u0ykm4g"]
+
+[ext_resource type="PackedScene" uid="uid://c17f4vowp0jm" path="res://scenes/particle_rain.tscn" id="1_a8wlb"]
+[ext_resource type="Script" uid="uid://cam82oqr42jrw" path="res://scripts/menus/main_menu.gd" id="1_bt2ir"]
+[ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="1_eoxvo"]
+[ext_resource type="Texture2D" uid="uid://day72o4fs8s57" path="res://assets/sprites/gem_sapphire_large.png" id="2_qa32v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
+font = ExtResource("1_eoxvo")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
+font = ExtResource("1_eoxvo")
+font_size = 64
+
+[node name="MainMenu" type="CanvasLayer" unique_id=358215257]
+script = ExtResource("1_bt2ir")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1105233121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="ParticleRain" parent="." unique_id=569330210 instance=ExtResource("1_a8wlb")]
+position = Vector2(960, -100)
+scale = Vector2(1.5, 1)
+
+[node name="Diamond" type="TextureRect" parent="." unique_id=1980662326]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_qa32v")
+
+[node name="Title" type="Label" parent="." unique_id=1284707411]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -480.0
+offset_top = 200.0
+offset_right = 480.0
+offset_bottom = 507.0
+grow_horizontal = 2
+text = "DIAMOND CLICKER
+ULTIMATE"
+label_settings = SubResource("LabelSettings_nxcxh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="." unique_id=1741228822]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -372.5
+offset_top = -280.0
+offset_right = 372.5
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="ButtonsContainer" unique_id=724602517]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eoxvo")
+theme_override_font_sizes/font_size = 80
+text = "PLAY"
+
+[node name="OptionsButton" type="Button" parent="ButtonsContainer" unique_id=2007050122]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eoxvo")
+theme_override_font_sizes/font_size = 80
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="ButtonsContainer" unique_id=1712785408]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eoxvo")
+theme_override_font_sizes/font_size = 80
+text = "QUIT"
+
+[node name="<3" type="Label" parent="." unique_id=661391391]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -76.0
+offset_right = 192.0
+grow_vertical = 0
+text = "Made with <3 by kyteidev"
+label_settings = SubResource("LabelSettings_4iqke")
+
+[node name="Version" type="Label" parent="." unique_id=40955680]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -76.0
+offset_right = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v. 0.1.0"
+label_settings = SubResource("LabelSettings_4iqke")
+
+[connection signal="pressed" from="ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]
