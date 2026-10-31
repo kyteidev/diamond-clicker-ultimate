@@ -14,3 +14,4 @@ Here: https://kyteidev.itch.io/diamond-clicker-ultimate
 - Unused Textures by Malcolm Riley - https://github.com/malcolmriley/unused-textures - Licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
 - Roguelike Raven 1 Bit Flat Icons by Clockwork Raven - https://itch.io/queue/c/3026405/roguelike-raven?game_id=3387289&password=
 - Groundhog font by ChevyRay - https://chevyray.itch.io/pixel-font-groundhog
+- Background music is by Abstraction - https://tallbeard.itch.io/music-loop-bundle
