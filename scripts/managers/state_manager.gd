@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_HUNGER = 3.0
+const MAX_HUNGER = 180.0
 const STARTING_TARGET = 1000.0
 
 var diamonds: float:
@@ -38,7 +38,7 @@ var most_bought: Dictionary
 
 
 func reset_values() -> void:
-	diamonds = 1000.0
+	diamonds = 0.0
 	target_diamonds = STARTING_TARGET
 
 	cost_mult = 1.0
