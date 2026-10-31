@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://sl3k0y2d2okt"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=204076075]
+process_mode = 3
 layer = 100
 
 [node name="Transition" type="ColorRect" parent="." unique_id=1154139382]

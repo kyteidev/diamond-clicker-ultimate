@@ -13,6 +13,8 @@ var time := 0.0
 
 
 func _ready() -> void:
+	get_tree().paused = false
+
 	if om.animations:
 		var title_orig_y = title.global_position.y
 		var title_tween := create_tween().set_loops()

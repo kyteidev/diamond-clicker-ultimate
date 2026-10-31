@@ -10,6 +10,10 @@ const TWEEN_DURATION = 0.5
 @onready var rect_scene: PackedScene = preload("res://scenes/transition.tscn")
 
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func transition_switch(scene_path: String) -> void:
 	var root = rect_scene.instantiate()
 	get_tree().root.add_child(root)
@@ -23,6 +27,8 @@ func transition_switch(scene_path: String) -> void:
 	tween_in.finished.connect(
 		func() -> void:
 			get_tree().change_scene_to_file(scene_path)
+			get_tree().paused = false
+
 			await get_tree().process_frame
 
 			var tween_out := create_tween()

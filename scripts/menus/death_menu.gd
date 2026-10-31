@@ -118,5 +118,4 @@ func _on_new_game_button_pressed() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	SFX.play("click")
-	get_tree().paused = false
 	TransitionManager.transition_switch("res://scenes/menus/main_menu.tscn")
