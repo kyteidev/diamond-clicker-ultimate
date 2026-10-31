@@ -26,8 +26,7 @@ func show_cards_menu() -> void:
 	var picked_cards: Array[String] = []
 	for card in cards_container.get_children():
 		var boost: Dictionary
-		var attempts: int = 0
-		while (boost.is_empty() or boost.name in picked_cards) and attempts < 30:
+		while boost.is_empty() or boost.name in picked_cards:
 			var random: float = rng.randf()
 			if random <= um.RARITY_CHANCES[um.BoostRarities.LEGENDARY]:
 				boost = um.LEGENDARY_BOOSTS.pick_random()
@@ -35,8 +34,7 @@ func show_cards_menu() -> void:
 				boost = um.RARE_BOOSTS.pick_random()
 			else:
 				boost = um.COMMON_BOOSTS.pick_random()
-			picked_cards.append(boost.name)
-			attempts += 1
+		picked_cards.append(boost.name)
 
 		var boost_data := BoosterCardData.new()
 		boost_data.booster_name = boost.name
