@@ -47,6 +47,8 @@ func _physics_process(delta: float) -> void:
 				click_particles.amount = round(sm.pick_mult)
 				get_tree().current_scene.add_child(click_particles)
 				click_particles.restart()
+
+			SFX.play("mine", -7.0, 0.3)
 	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 

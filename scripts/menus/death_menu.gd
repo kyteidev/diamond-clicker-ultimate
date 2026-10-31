@@ -68,6 +68,8 @@ func show_death_menu() -> void:
 			child.modulate.a = 0.0
 
 	visible = true
+	SFX.play("defeat", -8.0)
+
 	if om.animations:
 		var bg_tween := create_tween()
 		bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION) \
@@ -109,10 +111,12 @@ func _animate_stats() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
+	SFX.play("click")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
 func _on_main_menu_button_pressed() -> void:
+	SFX.play("click")
 	get_tree().paused = false
 	TransitionManager.transition_switch("res://scenes/menus/main_menu.tscn")

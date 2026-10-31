@@ -21,9 +21,11 @@ func _toggle_pause() -> void:
 
 
 func _on_resume_button_pressed() -> void:
+	SFX.play("click")
 	_toggle_pause()
 
 
 func _on_menu_button_pressed() -> void:
+	SFX.play("click")
 	get_tree().paused = false
 	TransitionManager.transition_switch("res://scenes/menus/main_menu.tscn")

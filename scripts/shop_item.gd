@@ -96,6 +96,8 @@ func _physics_process(_delta: float) -> void:
 					sm.most_bought["count"] = data.count
 				sm.diamonds_spent += cost
 				sm.total_bought += 1
+
+				SFX.play("click", 6.0)
 	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 

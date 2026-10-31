@@ -53,6 +53,8 @@ func _process(_delta: float) -> void:
 			if data.caveat_type != um.BoostTypes.NONE:
 				_perform_action(data.caveat_type, data.caveat_amount)
 			cards_menu.hide_cards_menu()
+
+			SFX.play("card")
 	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
@@ -80,6 +82,12 @@ func show_card() -> void:
 	await get_tree().process_frame
 	global_position.y = 1080 + size.y
 	modulate.a = 1.0
+
+	# delay sfx
+	get_tree().create_timer(0.2).timeout.connect(
+		func() -> void:
+			SFX.play("card_slide", -5.0),
+	)
 
 	var tween := create_tween()
 	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION if om.animations else 0.0) \

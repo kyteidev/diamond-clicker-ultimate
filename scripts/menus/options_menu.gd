@@ -23,34 +23,43 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	SFX.play("click")
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu.tscn")
 
 
 # yes i know this is really bad code, i'm too lazy to implement this better
 # since there are so few settings available
 func _on_particles_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.particles = toggled_on
 
 	particle_rain.emitting = om.particles
 
 
 func _on_crt_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.crt_shader = toggled_on
 
 
 func _on_animations_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.animations = toggled_on
 
 
 func _on_bgm_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.bgm = toggled_on
+
+	SFX.bgm_player.volume_db = -5.0 if toggled_on else -99.0
 
 
 func _on_sfx_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.sfx = toggled_on
 
 
 func _on_vsync_button_toggled(toggled_on: bool) -> void:
+	SFX.play("click")
 	om.vsync = toggled_on
 
 	DisplayServer.window_set_vsync_mode(
