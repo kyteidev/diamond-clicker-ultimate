@@ -112,8 +112,7 @@ func _animate_stats() -> void:
 
 func _on_new_game_button_pressed() -> void:
 	SFX.play("click")
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	TransitionManager.transition_switch("res://scenes/game.tscn")
 
 
 func _on_main_menu_button_pressed() -> void:
