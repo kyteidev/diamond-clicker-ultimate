@@ -52,3 +52,7 @@ func _on_sfx_button_toggled(toggled_on: bool) -> void:
 
 func _on_vsync_button_toggled(toggled_on: bool) -> void:
 	om.vsync = toggled_on
+
+	DisplayServer.window_set_vsync_mode(
+		DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED
+	)
