@@ -30,5 +30,8 @@ func _process(delta: float) -> void:
 
 func new_round() -> void:
 	sm.hunger = sm.MAX_HUNGER * sm.hunger_mult
-	sm.target_diamonds *= 1.5
 	sm.rounds += 1
+
+	sm.target_diamonds = 1000.0 * (2.15 ** (sm.rounds - 1)) * (sm.pick_mult ** 0.25) * (
+		sm.mult ** 0.5
+	) * sm.hunger_mult
