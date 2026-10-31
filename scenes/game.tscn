@@ -212,6 +212,7 @@ layer = 2
 visible = false
 
 [node name="PauseMenu" parent="." unique_id=641017661 node_paths=PackedStringArray("cards_menu", "death_menu") instance=ExtResource("12_dinhu")]
+layer = 4
 visible = false
 cards_menu = NodePath("../CardsMenu")
 death_menu = NodePath("../DeathMenu")
