@@ -74,10 +74,9 @@ func setup(card_data: BoosterCardData) -> void:
 
 
 func show_card() -> void:
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-
 	await get_tree().process_frame
 	global_position.y = 1080 + size.y
+	modulate.a = 1.0
 
 	var tween := create_tween()
 	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION) \
@@ -89,10 +88,16 @@ func show_card() -> void:
 
 
 func hide_card() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 	var tween := create_tween()
 	tween.tween_property(self, "global_position:y", 1080 + size.y, TWEEN_DURATION) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT) \
 			.set_delay(SELECTED_DELAY if selected else 0.0)
+	tween.finished.connect(
+		func() -> void:
+			modulate.a = 0.0,
+	)
 
 
 func _match_desc_text(type: int, amount) -> String:
