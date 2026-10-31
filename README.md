@@ -1,3 +1,5 @@
+### DISCLAIMER: NOT AN OFFICIAL MINECRAFT VIDEO GAME. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT
+
 ### WHAT IS THIS?
 This is a continuation of one of my old unfinished clicker games. I've ported it over to Godot and added new features, and also changed the gameplay quite a lot.
 
