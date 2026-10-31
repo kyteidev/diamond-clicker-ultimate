@@ -86,6 +86,13 @@ func _physics_process(_delta: float) -> void:
 
 				cost *= um.COST_MULT
 				cost = snapped(cost, 0.01)
+
+				# for stats
+				if data.count > sm.most_bought["count"]:
+					sm.most_bought["name"] = data.name
+					sm.most_bought["count"] = data.count
+				sm.diamonds_spent += cost
+				sm.total_bought += 1
 	else:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 

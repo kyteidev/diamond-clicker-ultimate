@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://mj4l23jojalv" path="res://scripts/menus/death_menu.gd" id="1_jgt2l"]
 [ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="1_s3l4v"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
+font = ExtResource("1_s3l4v")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgt2l"]
+font = ExtResource("1_s3l4v")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0k1m"]
+font = ExtResource("1_s3l4v")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
 font = ExtResource("1_s3l4v")
 font_size = 192
@@ -19,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.60784316)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2047803748]
+[node name="Stats" type="ColorRect" parent="." unique_id=2047803748]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -32,6 +47,230 @@ offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="Title" type="Label" parent="Stats" unique_id=1381521318]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 50.0
+offset_right = 123.0
+offset_bottom = 164.0
+grow_horizontal = 2
+text = "STATS"
+label_settings = SubResource("LabelSettings_4iqke")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="Stats" unique_id=334600330]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rounds" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=1619760000]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/Rounds" unique_id=76579503]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rounds: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/Rounds" unique_id=1423771368]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TotalDiamonds" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=1700980255]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/TotalDiamonds" unique_id=1515092429]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Diamonds: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/TotalDiamonds" unique_id=415036722]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ActiveDiamonds" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=162819027]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/ActiveDiamonds" unique_id=2012248758]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "    Active: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/ActiveDiamonds" unique_id=1193314016]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PassiveDiamonds" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=951294189]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/PassiveDiamonds" unique_id=1084850058]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "    Passive: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/PassiveDiamonds" unique_id=1237143589]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DiamondClicks" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=1324395755]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/DiamondClicks" unique_id=1341643147]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Diamond Clicks: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/DiamondClicks" unique_id=462301892]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HighestMultiplier" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=1620125366]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/HighestMultiplier" unique_id=571560183]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Highest Multiplier: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/HighestMultiplier" unique_id=1732092997]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HighestPickaxeMult" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=424355168]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Stats/StatsContainer/HighestPickaxeMult" unique_id=1586083802]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Highest Pickaxe Mult: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/HighestPickaxeMult" unique_id=856341982]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DiamondsSpent" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=1553324386]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/DiamondsSpent" unique_id=310386342]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Diamonds Spent: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/DiamondsSpent" unique_id=1935888615]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TotalBought" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=2074342584]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/TotalBought" unique_id=2136074476]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Bought: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/TotalBought" unique_id=549926394]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MostBought" type="HBoxContainer" parent="Stats/StatsContainer" unique_id=2138713462]
+layout_mode = 2
+
+[node name="Rounds" type="Label" parent="Stats/StatsContainer/MostBought" unique_id=1391610546]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Most Bought: "
+label_settings = SubResource("LabelSettings_jgt2l")
+vertical_alignment = 1
+
+[node name="Count" type="Label" parent="Stats/StatsContainer/MostBought" unique_id=1993862889]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_e0k1m")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats" unique_id=1125071173]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Button" type="Button" parent="Stats/HBoxContainer" unique_id=836749439]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_s3l4v")
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+
+[node name="Button2" type="Button" parent="Stats/HBoxContainer" unique_id=1586402208]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_s3l4v")
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
 
 [node name="Label" type="Label" parent="." unique_id=1446568148]
 anchors_preset = 4

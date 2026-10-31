@@ -6,9 +6,14 @@ var bg_orig_alpha: float
 var stats_orig_pos: Vector2
 var title_orig_pos: Vector2
 
+var sm := StateManager
+var h := Helper
+
 @onready var background: ColorRect = $Background
-@onready var stats: ColorRect = $ColorRect
+@onready var stats: ColorRect = $Stats
 @onready var title: Label = $Label
+
+@onready var stats_container: VBoxContainer = $Stats/StatsContainer
 
 
 func _ready() -> void:
@@ -26,6 +31,35 @@ func show_death_menu() -> void:
 
 	stats.global_position.x = 1920 + stats.size.x
 	title.global_position.x = -title.size.x
+
+	# update stats
+	var index = 0
+	for child in stats_container.get_children():
+		var count: Label = child.get_child(1) # label node
+		var text: String
+		match index:
+			0:
+				text = str(sm.rounds)
+			1:
+				text = h.shorten_number(floori(sm.active_diamonds + sm.passive_diamonds))
+			2:
+				text = h.shorten_number(floori(sm.active_diamonds))
+			3:
+				text = h.shorten_number(floori(sm.passive_diamonds))
+			4:
+				text = str(sm.diamond_clicked)
+			5:
+				text = "%sx" % sm.highest_mult
+			6:
+				text = "%sx" % sm.highest_pick_mult
+			7:
+				text = h.shorten_number(floori(sm.diamonds_spent))
+			8:
+				text = str(sm.total_bought)
+			9:
+				text = "%s [%s]" % [sm.most_bought["name"], sm.most_bought["count"]]
+		count.text = text
+		index += 1
 
 	visible = true
 

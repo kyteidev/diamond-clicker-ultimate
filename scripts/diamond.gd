@@ -30,6 +30,8 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_just_pressed("click"):
 			sm.diamonds += 1 * sm.pick_mult
+			sm.active_diamonds += 1 * sm.pick_mult
+			sm.diamond_clicked += 1
 
 			var click_counter: Label = CLICK_COUNTER_SCENE.instantiate()
 			click_counter.text = "+%s" % sm.pick_mult

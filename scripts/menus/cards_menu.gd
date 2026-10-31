@@ -66,7 +66,7 @@ func hide_cards_menu() -> void:
 	get_tree().create_timer(1.0).timeout.connect(
 		func() -> void:
 			get_tree().paused = false
-			game.reset()
+			game.new_round()
 
 			var bg_tween := create_tween()
 			bg_tween.tween_property(background, "color:a", 0.0, TWEEN_DURATION) \
