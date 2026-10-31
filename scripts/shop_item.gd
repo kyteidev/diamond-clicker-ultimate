@@ -15,6 +15,7 @@ var overlay_tween: Tween
 
 var sm := StateManager
 var um := UpgradesManager
+var om := OptionsManager
 var h := Helper
 
 var cost: float:
@@ -53,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 				disabled_overlay,
 				"color",
 				Color("0000009b"),
-				OVERLAY_TWEEN_DURATION,
+				OVERLAY_TWEEN_DURATION if om.animations else 0.0,
 			)
 		disabled_overlay.visible = true
 	else:
@@ -65,7 +66,7 @@ func _physics_process(_delta: float) -> void:
 				disabled_overlay,
 				"color",
 				Color("00000000"),
-				OVERLAY_TWEEN_DURATION,
+				OVERLAY_TWEEN_DURATION if om.animations else 0.0,
 			)
 			overlay_tween.finished.connect(
 				func() -> void:
@@ -73,9 +74,10 @@ func _physics_process(_delta: float) -> void:
 			)
 
 	if mouse_hovered and sm.diamonds >= cost:
-		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
+		if om.animations:
+			scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
 
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and om.animations:
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
@@ -93,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 					sm.most_bought["count"] = data.count
 				sm.diamonds_spent += cost
 				sm.total_bought += 1
-	else:
+	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
 

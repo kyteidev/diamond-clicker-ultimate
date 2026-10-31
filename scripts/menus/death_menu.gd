@@ -8,6 +8,7 @@ var stats_orig_pos: Vector2
 var title_orig_pos: Vector2
 
 var sm := StateManager
+var om := OptionsManager
 var h := Helper
 
 @onready var background: ColorRect = $Background
@@ -28,10 +29,11 @@ func _ready() -> void:
 func show_death_menu() -> void:
 	get_tree().paused = true
 
-	background.color.a = 0.0
+	if om.animations:
+		background.color.a = 0.0
 
-	stats.global_position.x = 1920 + stats.size.x
-	title.global_position.x = -title.size.x
+		stats.global_position.x = 1920 + stats.size.x
+		title.global_position.x = -title.size.x
 
 	# update stats
 	var index: int = 0
@@ -62,27 +64,28 @@ func show_death_menu() -> void:
 		count.text = text
 		index += 1
 
-		child.modulate.a = 0.0
+		if om.animations:
+			child.modulate.a = 0.0
 
 	visible = true
+	if om.animations:
+		var bg_tween := create_tween()
+		bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION) \
+				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
-	var bg_tween := create_tween()
-	bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION) \
-			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		var stats_tween := create_tween()
+		stats_tween.tween_property(stats, "global_position:x", stats_orig_pos.x, TWEEN_DURATION) \
+				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_delay(TWEEN_DURATION)
 
-	var stats_tween := create_tween()
-	stats_tween.tween_property(stats, "global_position:x", stats_orig_pos.x, TWEEN_DURATION) \
-			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_delay(TWEEN_DURATION)
+		var title_tween := create_tween()
+		title_tween.tween_property(title, "global_position:x", title_orig_pos.x, TWEEN_DURATION) \
+				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_delay(TWEEN_DURATION)
 
-	var title_tween := create_tween()
-	title_tween.tween_property(title, "global_position:x", title_orig_pos.x, TWEEN_DURATION) \
-			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_delay(TWEEN_DURATION)
-
-	stats_tween.finished.connect(
-		func() -> void:
-			await get_tree().process_frame
-			_animate_stats(),
-	)
+		stats_tween.finished.connect(
+			func() -> void:
+				await get_tree().process_frame
+				_animate_stats(),
+		)
 
 
 func _animate_stats() -> void:

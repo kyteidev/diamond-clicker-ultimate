@@ -69,6 +69,7 @@ color = Color(0.47058824, 0.7176471, 1, 1)
 
 [node name="ParticleRain" parent="GamePanel" unique_id=569330210 instance=ExtResource("1_u5sy4")]
 position = Vector2(640, -100)
+emitting = false
 
 [node name="Diamond" type="TextureRect" parent="GamePanel" unique_id=1615471962]
 layout_mode = 1

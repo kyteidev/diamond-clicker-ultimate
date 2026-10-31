@@ -1,9 +1,11 @@
 extends CanvasLayer
 
 var sm := StateManager
+var om := OptionsManager
 
 @onready var cards_menu: CanvasLayer = $CardsMenu
 @onready var death_menu: CanvasLayer = $DeathMenu
+@onready var particle_rain: CPUParticles2D = $GamePanel/ParticleRain
 
 
 func _ready() -> void:
@@ -11,6 +13,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	particle_rain.emitting = om.particles
+
 	sm.diamonds += sm.dps * delta
 	sm.passive_diamonds += sm.dps * delta
 	sm.hunger -= delta

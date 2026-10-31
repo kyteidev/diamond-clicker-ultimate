@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://br5jg5uwisxuv"]
+
+[ext_resource type="PackedScene" uid="uid://c17f4vowp0jm" path="res://scenes/particle_rain.tscn" id="1_bp0ux"]
+[ext_resource type="Script" uid="uid://dpwl3lr2jubtr" path="res://scripts/menus/options_menu.gd" id="1_ohqpn"]
+[ext_resource type="FontFile" uid="uid://byhs35j54epxn" path="res://assets/fonts/groundhog.ttf" id="2_60mby"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxcxh"]
+font = ExtResource("2_60mby")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4iqke"]
+font = ExtResource("2_60mby")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=2113443189]
+script = ExtResource("1_ohqpn")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1195245023]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47058824, 0.7176471, 1, 1)
+
+[node name="ParticleRain" parent="." unique_id=569330210 instance=ExtResource("1_bp0ux")]
+position = Vector2(960, -100)
+scale = Vector2(1.5, 1)
+emitting = false
+
+[node name="Label" type="Label" parent="." unique_id=1427937298]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = 100.0
+offset_right = 183.0
+offset_bottom = 214.0
+grow_horizontal = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_nxcxh")
+
+[node name="OptionsMainContainer" type="HBoxContainer" parent="." unique_id=846413133]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -290.0
+offset_right = 700.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 128
+
+[node name="OptionsPanel1" type="VBoxContainer" parent="OptionsMainContainer" unique_id=942513581]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Option1" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel1" unique_id=348406451]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel1/Option1" unique_id=1366051412]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Particles"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel1/Option1" unique_id=1525969175]
+layout_mode = 2
+button_pressed = true
+
+[node name="Option2" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel1" unique_id=753175049]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel1/Option2" unique_id=840125617]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CRT Shader"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel1/Option2" unique_id=1602137415]
+layout_mode = 2
+button_pressed = true
+
+[node name="Option3" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel1" unique_id=1061878467]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel1/Option3" unique_id=1934636568]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Animations"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel1/Option3" unique_id=556569998]
+layout_mode = 2
+button_pressed = true
+
+[node name="Option4" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel1" unique_id=1531915312]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel1/Option4" unique_id=455101196]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Background Music"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel1/Option4" unique_id=633331895]
+layout_mode = 2
+button_pressed = true
+
+[node name="Option5" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel1" unique_id=1938370914]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel1/Option5" unique_id=730385531]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sound Effects"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel1/Option5" unique_id=1997321787]
+layout_mode = 2
+button_pressed = true
+
+[node name="OptionsPanel2" type="VBoxContainer" parent="OptionsMainContainer" unique_id=188146052]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Option1" type="HBoxContainer" parent="OptionsMainContainer/OptionsPanel2" unique_id=2094926265]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMainContainer/OptionsPanel2/Option1" unique_id=1631433789]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V-Sync"
+label_settings = SubResource("LabelSettings_4iqke")
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="OptionsMainContainer/OptionsPanel2/Option1" unique_id=1640444888]
+layout_mode = 2
+button_pressed = true
+
+[node name="BackButton" type="Button" parent="." unique_id=1246823736]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -180.0
+offset_right = 75.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_60mby")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel1/Option1/CheckButton" to="." method="_on_particles_button_toggled"]
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel1/Option2/CheckButton" to="." method="_on_crt_button_toggled"]
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel1/Option3/CheckButton" to="." method="_on_animations_button_toggled"]
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel1/Option4/CheckButton" to="." method="_on_bgm_button_toggled"]
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel1/Option5/CheckButton" to="." method="_on_sfx_button_toggled"]
+[connection signal="toggled" from="OptionsMainContainer/OptionsPanel2/Option1/CheckButton" to="." method="_on_vsync_button_toggled"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

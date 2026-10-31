@@ -10,6 +10,7 @@ const SELECTED_DELAY = 0.5
 
 var sm := StateManager
 var um := UpgradesManager
+var om := OptionsManager
 
 var data: BoosterCardData
 var mouse_hovered := false
@@ -39,10 +40,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if mouse_hovered:
-		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
+		if om.animations:
+			scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
 
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
 			selected = true
@@ -51,7 +53,7 @@ func _process(_delta: float) -> void:
 			if data.caveat_type != um.BoostTypes.NONE:
 				_perform_action(data.caveat_type, data.caveat_amount)
 			cards_menu.hide_cards_menu()
-	else:
+	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
 
@@ -79,7 +81,7 @@ func show_card() -> void:
 	modulate.a = 1.0
 
 	var tween := create_tween()
-	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION) \
+	tween.tween_property(self, "global_position:y", orig_pos.y, TWEEN_DURATION if om.animations else 0.0) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(
 		func() -> void:
@@ -91,7 +93,11 @@ func hide_card() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var tween := create_tween()
-	tween.tween_property(self, "global_position:y", 1080 + size.y, TWEEN_DURATION) \
+	tween.tween_property(self, "global_position:y", 1080 + size.y, (
+		TWEEN_DURATION
+		if om.animations or selected
+		else 0.0
+	)) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT) \
 			.set_delay(SELECTED_DELAY if selected else 0.0)
 	tween.finished.connect(

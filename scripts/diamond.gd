@@ -13,19 +13,22 @@ var mouse_hovered := false
 var time = 0.0
 
 var sm := StateManager
+var om := OptionsManager
 var h := Helper
 
 
 func _physics_process(delta: float) -> void:
 	# diamond rotation
-	time += delta
-	rotation_degrees = (cos(deg_to_rad(time * 250))) * 10
+	if om.animations:
+		time += delta
+		rotation_degrees = (cos(deg_to_rad(time * 250))) * 10
 
 	# diamond clicks and mouse hover
 	if mouse_hovered:
-		scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
+		if om.animations:
+			scale = scale + ((Vector2.ONE * HOVER_SCALE - scale) / 5)
 
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and om.animations:
 			scale = scale + ((Vector2.ONE * CLICK_SCALE - scale) / 2)
 
 		if Input.is_action_just_pressed("click"):
@@ -38,12 +41,13 @@ func _physics_process(delta: float) -> void:
 			click_counter.global_position = get_global_mouse_position()
 			get_tree().current_scene.add_child(click_counter)
 
-			var click_particles: CPUParticles2D = CLICK_PARTICLES_SCENE.instantiate()
-			click_particles.global_position = get_global_mouse_position()
-			click_particles.amount = round(sm.pick_mult)
-			get_tree().current_scene.add_child(click_particles)
-			click_particles.restart()
-	else:
+			if om.particles:
+				var click_particles: CPUParticles2D = CLICK_PARTICLES_SCENE.instantiate()
+				click_particles.global_position = get_global_mouse_position()
+				click_particles.amount = round(sm.pick_mult)
+				get_tree().current_scene.add_child(click_particles)
+				click_particles.restart()
+	elif om.animations:
 		scale = scale + ((Vector2.ONE * BASE_SCALE - scale) / 2)
 
 

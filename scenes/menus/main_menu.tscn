@@ -27,6 +27,7 @@ color = Color(0.47058824, 0.7176471, 1, 1)
 [node name="ParticleRain" parent="." unique_id=569330210 instance=ExtResource("1_a8wlb")]
 position = Vector2(960, -100)
 scale = Vector2(1.5, 1)
+emitting = false
 
 [node name="Diamond" type="TextureRect" parent="." unique_id=1980662326]
 anchors_preset = 8

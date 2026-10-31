@@ -5,6 +5,7 @@ const TWEEN_DURATION = 0.5
 var rng := RandomNumberGenerator.new()
 
 var um := UpgradesManager
+var om := OptionsManager
 
 var bg_orig_alpha: float
 
@@ -52,7 +53,7 @@ func show_cards_menu() -> void:
 	# set up tween
 	background.color.a = 0.0
 	var bg_tween := create_tween()
-	bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION) \
+	bg_tween.tween_property(background, "color:a", bg_orig_alpha, TWEEN_DURATION if om.animations else 0.0) \
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
 	visible = true
@@ -63,13 +64,13 @@ func hide_cards_menu() -> void:
 		card.hide_card()
 
 	# time it takes for clicked booster card to finish tween
-	get_tree().create_timer(1.0).timeout.connect(
+	get_tree().create_timer(1.0 if om.animations else 0.5).timeout.connect(
 		func() -> void:
 			get_tree().paused = false
 			game.new_round()
 
 			var bg_tween := create_tween()
-			bg_tween.tween_property(background, "color:a", 0.0, TWEEN_DURATION) \
+			bg_tween.tween_property(background, "color:a", 0.0, TWEEN_DURATION if om.animations else 0.0) \
 					.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 			bg_tween.finished.connect(
 				func() -> void:
